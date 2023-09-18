@@ -12,7 +12,7 @@ public:
         int starting_row=0, starting_col=0;
         int ending_row=row-1, ending_col=cols-1;
 
-        while(count<total)
+        while(starting_row <= ending_row && starting_col <=ending_col)
         {
             //print starting row
             for(int index=starting_col;count<total && index<=ending_col;index++){
@@ -29,13 +29,15 @@ public:
             ending_col--;
 
             //print ending row
-            for(int index=ending_col;count<total && index>=starting_col;index--){
-                ans.push_back(matrix[ending_row][index]);
-                count++;
+            if(starting_row <= ending_row)
+                for(int index=ending_col;count<total && index>=starting_col;index--){
+                    ans.push_back(matrix[ending_row][index]);
+                    count++;
             }
             ending_row--;
 
             //print starting col
+            if(starting_col <= ending_col)
             for(int index=ending_row;count<total &&index>=starting_row;index--){
                 ans.push_back(matrix[index][starting_col]);
                 count++;
