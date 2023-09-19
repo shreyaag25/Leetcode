@@ -44,8 +44,10 @@ public:
             }
             if(i<n){
                 if(st.empty()==false){   
-                nqe.push_back(st.top());
-               }     else nqe.push_back(-1);
+                    nqe.push_back(st.top());
+               }     
+               else 
+                    nqe.push_back(-1);
             }
             st.push(nums[i%n]);  
         }
