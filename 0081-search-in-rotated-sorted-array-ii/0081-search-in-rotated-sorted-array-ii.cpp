@@ -7,6 +7,7 @@ public:
             int mid = low+(high-low)/2;
             if(nums[mid]==target)
                 return true;
+            //edge case - when all three values are equal - due to this, worst case tc - O(n/2)
             if(nums[mid]==nums[low] && nums[mid]== nums[high])
             {
                 low++;
