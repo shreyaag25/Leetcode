@@ -13,7 +13,7 @@ public:
         for(int i = 4 ; i <= n; i++)
         {
             maxi = INT_MIN;
-            for(int j = 2 ; j< i-1 ; j++)
+            for(int j = 2 ; j<= i/2 ; j++)
             {
                 int first = j;
                 int second = i-j;
