@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    int find(vector<int> nums)
+    int tabulation(vector<int> nums)
     {
         vector<int> dp(nums.size(), -1);
         dp[0] = nums[0];
@@ -16,6 +16,23 @@ public:
         }
         return dp[nums.size()-1];
     }
+
+    int spaceOptimization(vector<int> nums)
+    {
+        int prev = nums[0];
+        int prev2 = 0;
+        int curr ;
+        for(int i = 1; i<nums.size(); i++)
+        {
+            int pick = nums[i] + prev2;
+            int notPick = 0+ prev;
+            curr = max(pick, notPick);
+            prev2 = prev;
+            prev = curr;
+        }
+        return prev;
+    }
+
     int rob(vector<int>& nums) {
       // tabulation - o(n) time and o(n) space
         int n = nums.size();
@@ -29,8 +46,10 @@ public:
             if(i!=n-1)
                 temp2.push_back(nums[i]);
         }
-        int ans1 = find(temp1);
-        int ans2 = find(temp2);
+        // int ans1 = tabulation(temp1);
+        // int ans2 = tabulation(temp2);
+        int ans1 = spaceOptimization(temp1);
+        int ans2 = spaceOptimization(temp2);
         return max(ans1, ans2);
-    }
+    } 
 };
