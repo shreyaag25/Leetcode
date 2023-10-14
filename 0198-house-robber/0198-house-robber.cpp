@@ -18,18 +18,32 @@ public:
         // vector<int> dp(nums.size(), -1);
         // return find(nums.size()-1, nums, dp);
 
-        //tabulation
-        vector<int> dp(nums.size(), -1);
-        dp[0] = nums[0];
-        int neg = 0;
+        //tabulation - o(n) time and o(n) space
+        // vector<int> dp(nums.size(), -1);
+        // dp[0] = nums[0];
+        // int neg = 0;
+        // for(int i = 1; i<nums.size(); i++)
+        // {
+        //     int pick = nums[i];
+        //     if(i>1)
+        //         pick = pick+ dp[i-2];
+        //     int notPick = dp[i-1];
+        //     dp[i] = max(pick, notPick);
+        // }
+        // return dp[nums.size()-1];
+
+        //space optimization - time - o(n ) and space - o (1)
+        int prev = nums[0];
+        int prev2 = 0;
+        int curr ;
         for(int i = 1; i<nums.size(); i++)
         {
-            int pick = nums[i];
-            if(i>1)
-                pick = pick+ dp[i-2];
-            int notPick = dp[i-1];
-            dp[i] = max(pick, notPick);
+            int pick = nums[i] + prev2;
+            int notPick = 0+ prev;
+            curr = max(pick, notPick);
+            prev2 = prev;
+            prev = curr;
         }
-        return dp[nums.size()-1];
+        return prev;
     }
 };
