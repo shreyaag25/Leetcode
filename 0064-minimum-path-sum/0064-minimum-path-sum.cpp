@@ -8,9 +8,9 @@ public:
             return INT_MAX;
         if(dp[i][j] != -1)
             return dp[i][j];
-        int up = solve(grid, dp, i-1, j);
-        int left = solve(grid, dp, i, j-1) ;
-        return dp[i][j] = grid[i][j] + min(up, left);
+        int up = grid[i][j] + solve(grid, dp, i-1, j);
+        int left = grid[i][j] + solve(grid, dp, i, j-1) ;
+        return dp[i][j] =  min(up, left);
     }
 
     int minPathSum(vector<vector<int>>& grid) {
